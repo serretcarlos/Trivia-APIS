@@ -25,6 +25,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     long startTime = 0;
     long pauseTime = 0;
     private ProgressBar progressBar;
+    private int iQuestion = 1;
 
     //runs without a timer by reposting this handler at the end of the runnable
     Handler timerHandler = new Handler();
@@ -55,6 +56,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private Button btnOpcionDos;
     private Button btnOpcionTres;
     private TextView tvPregunta;
+    private TextView tvNumeroPregunta;
     private String mAnswer;
     private int mQuestionNumber = 0;
 
@@ -105,6 +107,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         hide();
 
         tvPregunta = findViewById(R.id.text_pregunta_ques);
+        tvNumeroPregunta = findViewById(R.id.text_question_number);
         btnOpcionUno = findViewById(R.id.btn_choiceone);
         btnOpcionDos = findViewById(R.id.btn_choicetwo);
         btnOpcionTres = findViewById(R.id.btn_choicethree);
@@ -169,6 +172,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         btnOpcionTres.setText(mQuestionLibrary.getChoice3(mQuestionNumber));
         mAnswer = mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
         mQuestionNumber++;
+        tvNumeroPregunta.setText(String.valueOf(mQuestionNumber));
     }
 
     private void somethingAnswered(final int id, boolean correcta){
