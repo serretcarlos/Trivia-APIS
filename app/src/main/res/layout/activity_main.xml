@@ -35,7 +35,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             android:textColor="#FFF"
-            android:textSize="42sp"/>
+            android:textSize="42sp"
+            android:fontFamily="@font/varela_round"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline5"
@@ -53,6 +54,7 @@
             android:layout_marginTop="32dp"
             android:text="Jugar"
             android:textColor="#FFF"
+            android:fontFamily="@font/varela_round"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +68,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="Puntuaciones"
+            android:fontFamily="@font/varela_round"
             android:textColor="#FFF"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
