@@ -200,7 +200,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     }
                 });
             }
-        }, 5000);
+        }, 2500);
     }
 
     private void hide() {
