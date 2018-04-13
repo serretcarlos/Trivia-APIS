@@ -55,13 +55,16 @@ public class PunctuationActivity extends AppCompatActivity {
             hide();
         }
     };
-
+    private int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_punctuation);
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
+        score = getIntent().getIntExtra("score", 0);
+        TextView tvScore = findViewById(R.id.text_puntaje_punc);
+        tvScore.setText(String.valueOf(score));
     }
 
     @Override
