@@ -164,6 +164,21 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
+                    android:elevation="2dp"
+                    android:background="@drawable/unanswered"/>
+
+                <Button
+                    android:id="@+id/btn_choicefour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choice 4"
+                    android:textSize="15sp"
+                    android:textAllCaps="false"
+                    android:textAlignment="textStart"
+                    android:paddingStart="18dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="18dp"
                     android:elevation="2dp"
                     android:background="@drawable/unanswered"/>

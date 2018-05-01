@@ -43,6 +43,11 @@ public class QuestionsLibrary {
         return choice2;
     }
 
+    public String getChoice4(int a) {
+        String choice3 = mChoices[a][3];
+        return choice3;
+    }
+
     public String getCorrectAnswer(int a) {
         String answer = mCorrectAnswers[a];
         return answer;

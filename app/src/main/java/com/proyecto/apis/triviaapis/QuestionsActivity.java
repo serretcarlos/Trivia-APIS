@@ -56,6 +56,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private Button btnOpcionUno;
     private Button btnOpcionDos;
     private Button btnOpcionTres;
+    private Button btnOpcionCuatro;
     private TextView tvPregunta;
     private TextView tvNumeroPregunta;
     private TextView tvPuntaje;
@@ -115,9 +116,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         btnOpcionUno = findViewById(R.id.btn_choiceone);
         btnOpcionDos = findViewById(R.id.btn_choicetwo);
         btnOpcionTres = findViewById(R.id.btn_choicethree);
+        btnOpcionCuatro = findViewById(R.id.btn_choicefour);
         btnOpcionUno.setOnClickListener(this);
         btnOpcionDos.setOnClickListener(this);
         btnOpcionTres.setOnClickListener(this);
+        btnOpcionCuatro.setOnClickListener(this);
         updateQuestion();
 
         txtProgress = findViewById(R.id.txtProgress);
@@ -143,6 +146,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btn_choicethree:
                 if (btnOpcionTres.getText() == mAnswer){
+                    correct = true;
+                }
+                break;
+            case R.id.btn_choicefour:
+                if (btnOpcionCuatro.getText() == mAnswer){
                     correct = true;
                 }
                 break;
@@ -172,6 +180,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             btnOpcionUno.setText(mQuestionLibrary.getChoice1(arrPreguntas.get(mQuestionNumber)));
             btnOpcionDos.setText(mQuestionLibrary.getChoice2(arrPreguntas.get(mQuestionNumber)));
             btnOpcionTres.setText(mQuestionLibrary.getChoice3(arrPreguntas.get(mQuestionNumber)));
+            btnOpcionCuatro.setText(mQuestionLibrary.getChoice4(arrPreguntas.get(mQuestionNumber)));
             mAnswer = mQuestionLibrary.getCorrectAnswer(arrPreguntas.get(mQuestionNumber));
         } else {
             Intent intent = new Intent(QuestionsActivity.this, PunctuationActivity.class);
@@ -197,6 +206,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         btnOpcionUno.setEnabled(false);
         btnOpcionDos.setEnabled(false);
         btnOpcionTres.setEnabled(false);
+        btnOpcionCuatro.setEnabled(false);
         Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
             @Override
@@ -207,6 +217,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                         btnOpcionUno.setEnabled(true);
                         btnOpcionDos.setEnabled(true);
                         btnOpcionTres.setEnabled(true);
+                        btnOpcionCuatro.setEnabled(true);
                         startTime = System.currentTimeMillis();
                         timerHandler.postDelayed(timerRunnable, 0);
                         updateQuestion();
