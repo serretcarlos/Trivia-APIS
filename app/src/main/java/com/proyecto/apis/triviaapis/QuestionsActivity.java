@@ -175,7 +175,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void updateQuestion(){
-        if (mQuestionNumber < 3) {
+        if (mQuestionNumber < 10) {
             tvPregunta.setText(mQuestionLibrary.getQuestion(arrPreguntas.get(mQuestionNumber)));
             btnOpcionUno.setText(mQuestionLibrary.getChoice1(arrPreguntas.get(mQuestionNumber)));
             btnOpcionDos.setText(mQuestionLibrary.getChoice2(arrPreguntas.get(mQuestionNumber)));
@@ -190,7 +190,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             this.finish();
         }
         mQuestionNumber++;
-        if (mQuestionNumber-1<3)
+        if (mQuestionNumber-1<10)
             tvNumeroPregunta.setText(String.valueOf(mQuestionNumber));
     }
 
@@ -258,10 +258,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
 
     public void shuffle() {
-        int nuevo = new Random().nextInt(3);
-        for (int i = 0; i < 3; i++) {
+        int nuevo = new Random().nextInt(10);
+        for (int i = 0; i < 10; i++) {
             while (arrPreguntas.contains(nuevo)){
-                nuevo = new Random().nextInt(4);
+                nuevo = new Random().nextInt(11);
             }
             arrPreguntas.add(nuevo);
         }
