@@ -34,6 +34,11 @@
             android:name=".QuestionsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_questions"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".HistoryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_history"
             android:theme="@style/FullscreenTheme"></activity>
     </application>
 
