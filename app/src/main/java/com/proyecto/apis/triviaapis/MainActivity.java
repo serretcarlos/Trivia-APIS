@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         tvPuntuaciones.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, PunctuationActivity.class));
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
             }
         });
         mContentView = findViewById(R.id.fullscreen_content);

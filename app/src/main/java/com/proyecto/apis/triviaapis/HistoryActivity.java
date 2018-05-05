@@ -7,17 +7,22 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class PunctuationActivity extends AppCompatActivity {
-    /**
-     * Some older devices needs a small delay between UI widget updates
-     * and a change of the status and navigation bar.
-     */
+public class HistoryActivity extends AppCompatActivity {
+
+    PunctuationAdapter adapter;
+    PunctuationDBHelper punctuationDBHelper;
+    ArrayList<Punctuation> punctuationArrayList;
+    private PunctuationOperations dao;
+    ListView lvPuntos;
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
@@ -55,16 +60,20 @@ public class PunctuationActivity extends AppCompatActivity {
             hide();
         }
     };
-    private int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_punctuation);
+        setContentView(R.layout.activity_history);
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
-        score = getIntent().getIntExtra("score", 0);
-        TextView tvScore = findViewById(R.id.text_puntaje_punc);
-        tvScore.setText(String.valueOf(score));
+        dao = new PunctuationOperations();
+        dao.open();
+        punctuationArrayList = new ArrayList<>();
+        punctuationArrayList = showPunctuations();
+        lvPuntos = findViewById(R.id.list_puntos);
+        adapter = new PunctuationAdapter(getApplicationContext(), punctuationArrayList);
+        lvPuntos.setAdapter(adapter);
+        registerForContextMenu(lvPuntos);
     }
 
     @Override
@@ -93,6 +102,16 @@ public class PunctuationActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
     }
 
+    public ArrayList<Punctuation> showPunctuations(){
+        ArrayList<Punctuation> p;
+        p = dao.getAllPunctuations();
+        if (p != null){
+            return p;
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Schedules a call to hide() in delay milliseconds, canceling any
      * previously scheduled calls.
@@ -101,5 +120,4 @@ public class PunctuationActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
-
 }

@@ -7,4 +7,6 @@
     <string name="title_activity_punctuation">PunctuationActivity</string>
 
     <string name="title_activity_questions">QuestionsActivity</string>
+
+    <string name="title_activity_history">HistoryActivity</string>
 </resources>
