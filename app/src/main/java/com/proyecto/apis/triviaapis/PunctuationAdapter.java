@@ -29,10 +29,10 @@ public class PunctuationAdapter extends ArrayAdapter<Punctuation> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.row, parent, false);
         }
 
-        TextView tvPuntos = (TextView) convertView.findViewById(R.id.text_puntos);
-        TextView tvFecha = (TextView) convertView.findViewById(R.id.text_fecha);
+        TextView tvPuntos = convertView.findViewById(R.id.text_puntos);
+        TextView tvFecha =  convertView.findViewById(R.id.text_fecha);
         Punctuation punctuation = getItem(position);
-        tvPuntos.setText(punctuation.getmPunctation());
+        tvPuntos.setText(String.valueOf(punctuation.getmPunctation()));
         tvFecha.setText(punctuation.getmDate());
         return convertView;
     }

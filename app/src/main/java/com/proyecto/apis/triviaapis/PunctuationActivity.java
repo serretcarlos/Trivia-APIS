@@ -5,10 +5,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -18,6 +22,8 @@ public class PunctuationActivity extends AppCompatActivity {
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
      */
+    PunctuationOperations dao;
+    Punctuation puntuacion;
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
@@ -65,6 +71,16 @@ public class PunctuationActivity extends AppCompatActivity {
         score = getIntent().getIntExtra("score", 0);
         TextView tvScore = findViewById(R.id.text_puntaje_punc);
         tvScore.setText(String.valueOf(score));
+
+        dao = new PunctuationOperations(getApplicationContext());
+        dao.open();
+
+        Date currentTime = Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("MMM dd,yyyy  hh:mm a");
+        String date = format.format(currentTime);
+
+        puntuacion = new Punctuation(score, date);
+        dao.addPunctuation(puntuacion);
     }
 
     @Override
@@ -101,5 +117,16 @@ public class PunctuationActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            this.finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 
 }

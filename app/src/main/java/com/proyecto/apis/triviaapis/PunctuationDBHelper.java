@@ -17,15 +17,20 @@ public class PunctuationDBHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
+            DataBaseSchema.PuntuacionesTable.TABLE_NAME +
+            "(" +
+            DataBaseSchema.PuntuacionesTable._ID + " INTEGER PRIMARY KEY," +
+            DataBaseSchema.PuntuacionesTable.COLUMN_NAME_PUNTOS + " INTEGER," +
+            DataBaseSchema.PuntuacionesTable.COLUMN_NAME_FECHA + " TEXT"+
+            ")";
+
+    String DELETE_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " +
+            DataBaseSchema.PuntuacionesTable.TABLE_NAME;
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
-                DataBaseSchema.PuntuacionesTable.TABLE_NAME +
-                "(" +
-                DataBaseSchema.PuntuacionesTable._ID + " INTEGER PRIMARY KEY," +
-                DataBaseSchema.PuntuacionesTable.COLUMN_NAME_PUNTOS + " INTEGER," +
-                DataBaseSchema.PuntuacionesTable.COLUMN_NAME_FECHA + " TEXT"+
-                ")";
+
         Log.i("Producthelper onCreate", CREATE_PRODUCTS_TABLE);
         db.execSQL(CREATE_PRODUCTS_TABLE);
 
@@ -33,8 +38,6 @@ public class PunctuationDBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String DELETE_PRODUCTS_TABLE = "DROP TABLE IF EXISTS " +
-                DataBaseSchema.PuntuacionesTable.TABLE_NAME;
         db.execSQL(DELETE_PRODUCTS_TABLE);
         onCreate(db);
     }

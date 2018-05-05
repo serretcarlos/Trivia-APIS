@@ -1,6 +1,7 @@
 package com.proyecto.apis.triviaapis;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +19,9 @@ public class PunctuationOperations {
     private PunctuationDBHelper dbHelper;
     private Punctuation punctuation;
 
+    public PunctuationOperations(Context context){
+        dbHelper = new PunctuationDBHelper(context);
+    }
 
     public void open() throws SQLException{
         try {
@@ -52,8 +56,8 @@ public class PunctuationOperations {
             if (cursor.moveToFirst()){
                 do {
                     punctuation = new Punctuation(
-                            Integer.parseInt(cursor.getString(0)),
-                            cursor.getString(1));
+                            Integer.parseInt(cursor.getString(1)),
+                            cursor.getString(2));
                     listaPunctuations.add(punctuation);
                 } while (cursor.moveToNext());
             }

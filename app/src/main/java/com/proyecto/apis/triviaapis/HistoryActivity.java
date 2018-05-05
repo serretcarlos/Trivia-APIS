@@ -66,11 +66,11 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
-        dao = new PunctuationOperations();
+        dao = new PunctuationOperations(getApplicationContext());
         dao.open();
         punctuationArrayList = new ArrayList<>();
         punctuationArrayList = showPunctuations();
-        lvPuntos = findViewById(R.id.list_puntos);
+        lvPuntos = findViewById(R.id.listView);
         adapter = new PunctuationAdapter(getApplicationContext(), punctuationArrayList);
         lvPuntos.setAdapter(adapter);
         registerForContextMenu(lvPuntos);
