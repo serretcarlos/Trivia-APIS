@@ -273,6 +273,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
         {
+            resetTimer();
             this.finish();
         }
         return super.onKeyDown(keyCode, event);
